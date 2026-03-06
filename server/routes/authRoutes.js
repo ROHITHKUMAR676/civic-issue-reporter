@@ -217,7 +217,7 @@ if (!user) {
     );
 
     // redirect to frontend with token
-    res.redirect(`http://localhost:5173/google-success?token=${token}`);
+    res.redirect(`https://civic-issue-reporter-track.vercel.app/google-success?token=${token}`);
   }
 );
 // ================= VERIFY OTP =================
