@@ -23,7 +23,7 @@ export default function Inbox() {
         }
 
         const res = await axios.get(
-          "http://localhost:5000/api/notifications",
+          "https://civic-issue-reporter-c7du.onrender.com/api/notifications",
           {
             headers: {
               Authorization: `Bearer ${token}`,

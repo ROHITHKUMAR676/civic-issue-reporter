@@ -17,7 +17,7 @@ function DeptIssues() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/issues/dept/issues",
+        "https://civic-issue-reporter-c7du.onrender.com/api/issues/dept/issues",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -42,7 +42,7 @@ function DeptIssues() {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/issues/dept/issues/${id}/status`,
+        `https://civic-issue-reporter-c7du.onrender.com/api/issues/dept/issues/${id}/status`,
         { status: "In Progress" },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -65,7 +65,7 @@ function DeptIssues() {
     try {
 
       const res = await axios.put(
-        `http://localhost:5000/api/issues/dept/issues/${id}/proof`,
+        `https://civic-issue-reporter-c7du.onrender.com/api/issues/dept/issues/${id}/proof`,
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -88,7 +88,7 @@ function DeptIssues() {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/issues/dept/issues/${id}/status`,
+        `https://civic-issue-reporter-c7du.onrender.com/api/issues/dept/issues/${id}/status`,
         { status: "Pending Verification" },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -50,7 +50,7 @@ useEffect(() => {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/issues/my-latest",
+        "https://civic-issue-reporter-c7du.onrender.com/api/issues/my-latest",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -85,7 +85,7 @@ useEffect(() => {
       }
 
       const res = await axios.get(
-        "http://localhost:5000/api/me",
+        "https://civic-issue-reporter-c7du.onrender.com/api/me",
         {
           headers: {
             Authorization: `Bearer ${token}`,

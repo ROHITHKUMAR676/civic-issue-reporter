@@ -52,7 +52,7 @@ export default function NearbyIssues() {
         setUserLocation(parsedLocation);
 
         const res = await axios.get(
-          `http://localhost:5000/api/issues/nearby?lat=${lat}&lng=${lng}`
+          `https://civic-issue-reporter-c7du.onrender.com/api/issues/nearby?lat=${lat}&lng=${lng}`
         );
 
         setIssues(res.data);
@@ -77,7 +77,7 @@ export default function NearbyIssues() {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        `http://localhost:5000/api/issues/${issueId}/upvote`,
+        `https://civic-issue-reporter-c7du.onrender.com/api/issues/${issueId}/upvote`,
         {},
         {
           headers: {

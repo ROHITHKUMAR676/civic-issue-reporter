@@ -34,7 +34,7 @@ export default function Account() {
       }
 
       const res = await axios.get(
-        "http://localhost:5000/api/me",
+        "https://civic-issue-reporter-c7du.onrender.com/api/me",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -64,7 +64,7 @@ const handleSave = async () => {
     const token = localStorage.getItem("token");
 
     const res = await axios.put(
-      "http://localhost:5000/api/update-phone",
+      "https://civic-issue-reporter-c7du.onrender.com/api/update-phone",
       { phone },
       {
         headers: {

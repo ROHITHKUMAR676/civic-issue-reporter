@@ -28,8 +28,8 @@ function DeptDashboard() {
 
         // ✅ Fetch stats + issues together
         const [statsRes, issuesRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/issues/dept/stats", { headers }),
-          axios.get("http://localhost:5000/api/issues/dept/issues", { headers }),
+          axios.get("https://civic-issue-reporter-c7du.onrender.com/api/issues/dept/stats", { headers }),
+          axios.get("https://civic-issue-reporter-c7du.onrender.com/api/issues/dept/issues", { headers }),
         ]);
 
         setStats(statsRes.data);

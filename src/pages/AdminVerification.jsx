@@ -16,7 +16,7 @@ function AdminVerification() {
   const fetchIssues = async () => {
 
     const res = await axios.get(
-      "http://localhost:5000/api/issues/verification",
+      "https://civic-issue-reporter-c7du.onrender.com/api/issues/verification",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -38,7 +38,7 @@ function AdminVerification() {
   const approveIssue = async (id) => {
 
     await axios.put(
-      `http://localhost:5000/api/issues/${id}/verify`,
+      `https://civic-issue-reporter-c7du.onrender.com/api/issues/${id}/verify`,
       {},
       {
         headers: {

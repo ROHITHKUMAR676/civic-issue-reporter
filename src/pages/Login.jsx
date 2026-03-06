@@ -26,7 +26,7 @@ const handleLogin = async () => {
     setError("");
     setLoading(true);
 
-    const res = await axios.post("http://localhost:5000/api/login", {
+    const res = await axios.post("https://civic-issue-reporter-c7du.onrender.com/api/login", {
       email,
       password,
     });
@@ -167,7 +167,7 @@ else {
         <button
           onClick={() => {
             window.location.href =
-              "http://localhost:5000/api/auth/google";
+              "https://civic-issue-reporter-c7du.onrender.com/api/auth/google";
           }}
           className="
           w-full flex items-center justify-center gap-2

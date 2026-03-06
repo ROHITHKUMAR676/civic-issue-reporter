@@ -23,7 +23,7 @@ export default function Register() {
       setError("");
 
       const res = await axios.post(
-        "http://localhost:5000/api/register",
+        "https://civic-issue-reporter-c7du.onrender.com/api/register",
         {
           name,
           email,

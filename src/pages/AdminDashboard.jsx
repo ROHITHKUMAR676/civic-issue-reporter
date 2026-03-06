@@ -23,7 +23,7 @@ function AdminDashboard() {
         const token = localStorage.getItem("token");
 
         const res = await axios.get(
-          "http://localhost:5000/api/issues",
+          "https://civic-issue-reporter-c7du.onrender.com/api/issues",
           {
             headers: {
               Authorization: `Bearer ${token}`,

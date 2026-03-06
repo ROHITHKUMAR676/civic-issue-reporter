@@ -91,7 +91,7 @@ function AdminIssues() {
   const fetchIssues = async () => {
 
     const res = await axios.get(
-      "http://localhost:5000/api/issues",
+      "https://civic-issue-reporter-c7du.onrender.com/api/issues",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -149,7 +149,7 @@ function AdminIssues() {
   const assignDept = async (id, department) => {
 
     await axios.put(
-      `http://localhost:5000/api/issues/${id}/assign`,
+      `https://civic-issue-reporter-c7du.onrender.com/api/issues/${id}/assign`,
       { department },
       {
         headers: { Authorization: `Bearer ${token}` },

@@ -12,7 +12,7 @@ const session = require("express-session");
 const passport = require("./config/passport");
 const app = express();
 app.use(cors({
-  origin: "http://localhost:5173", // React app
+  origin: "*", // React app
   credentials: true,
 }));
 app.use(express.json());

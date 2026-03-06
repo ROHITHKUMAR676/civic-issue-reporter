@@ -49,7 +49,7 @@ export default function VerifyOtp() {
 
     try {
 
-      await axios.post("http://localhost:5000/api/verify-otp",{
+      await axios.post("https://civic-issue-reporter-c7du.onrender.com/api/verify-otp",{
         email,
         otp: finalOtp
       });
@@ -67,7 +67,7 @@ export default function VerifyOtp() {
 
     try {
 
-      await axios.post("http://localhost:5000/api/resend-otp",{ email });
+      await axios.post("https://civic-issue-reporter-c7du.onrender.com/api/resend-otp",{ email });
 
       alert("New OTP sent!");
       setTimer(30);
