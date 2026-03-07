@@ -12,7 +12,7 @@ const session = require("express-session");
 const passport = require("./config/passport");
 const app = express();
 app.use(cors({
-  origin: ["https://civic-issue-reporter-track.vercel.app"], 
+  origin: ["https://civic-issue-reporter-pi.vercel.app"], 
   credentials: true,
 }));
 app.use(express.json());
