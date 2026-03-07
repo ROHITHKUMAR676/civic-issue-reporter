@@ -1,10 +1,10 @@
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import cityAnimation from "../assets/city.json";
 import { FcGoogle } from "react-icons/fc";
 import { HiUser, HiMail, HiLockClosed } from "react-icons/hi";
-import { useState } from "react";
-import axios from "axios"; // ⭐ NEW
+import { useState } from "react"; // ⭐ NEW
 
 export default function Register() {
   const navigate = useNavigate();

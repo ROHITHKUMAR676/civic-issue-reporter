@@ -1,10 +1,11 @@
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Lottie from "lottie-react";
 import cityAnimation from "../assets/city.json";
 import { FcGoogle } from "react-icons/fc";
 import { HiMail, HiLockClosed } from "react-icons/hi";
-import axios from "axios";
+
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,8 +18,6 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // 🔥 LOGIN FUNCTION
-  // 🔥 LOGIN FUNCTION
 const handleLogin = async () => {
   try {
     setError("");
