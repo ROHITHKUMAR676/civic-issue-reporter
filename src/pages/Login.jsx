@@ -6,8 +6,6 @@ import { FcGoogle } from "react-icons/fc";
 import { HiMail, HiLockClosed } from "react-icons/hi";
 import axios from "axios";
 
-
-
 export default function Login() {
   const navigate = useNavigate();
 

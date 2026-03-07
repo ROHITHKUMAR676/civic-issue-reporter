@@ -12,7 +12,7 @@ const session = require("express-session");
 const passport = require("./config/passport");
 const app = express();
 app.use(cors({
-  origin: "*", // React app
+  origin: ["https://civic-issue-reporter-track.vercel.app"], // React app
   credentials: true,
 }));
 app.use(express.json());
@@ -21,6 +21,10 @@ app.use(
     secret: "civic-secret",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      secure: true,
+      sameSite: "none"
+    }
   })
 );
 app.use(express.urlencoded({ extended: true }));
