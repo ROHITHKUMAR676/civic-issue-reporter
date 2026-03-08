@@ -13,11 +13,28 @@ router.post("/register", async (req, res) => {
     const { name, email, password ,role , department } = req.body;
     const userExists = await User.findOne({ email });
 
-    if (userExists) {
-      return res.status(400).json({
-        message: "User already exists"
-      });
-    }
+if (userExists) {
+
+  if (userExists.isVerified) {
+    return res.status(400).json({
+      message: "User already exists"
+    });
+  }
+
+  // user exists but not verified → resend OTP
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+  userExists.otp = otp;
+  userExists.otpExpiry = Date.now() + 5 * 60 * 1000;
+
+  await userExists.save();
+
+  await sendOTP(email, otp);
+
+  return res.json({
+    message: "OTP resent. Please verify your email."
+  });
+}
 
 
     const salt = await bcrypt.genSalt(10);
