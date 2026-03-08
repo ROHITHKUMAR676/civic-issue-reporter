@@ -15,15 +15,26 @@ const transporter = nodemailer.createTransport({
 
 const sendOTP = async (email, otp) => {
 
-  await transporter.sendMail({
-    from: `"CivicAI" <${process.env.EMAIL_USER}>`,
-    to: email,
-    subject: "CivicAI Email Verification",
-    html: `
-      <h2>Your OTP is: ${otp}</h2>
-      <p>This OTP expires in 5 minutes.</p>
-    `
-  });
+  try {
+
+    await transporter.sendMail({
+      from: `"CivicAI" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: "CivicAI Email Verification",
+      html: `
+        <h2>Your OTP is: ${otp}</h2>
+        <p>This OTP expires in 5 minutes.</p>
+      `
+    });
+
+    console.log("OTP email sent to:", email);
+
+  } catch (error) {
+
+    console.error("Email sending failed:", error);
+    throw error;
+
+  }
 
 };
 

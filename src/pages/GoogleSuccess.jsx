@@ -11,13 +11,19 @@ export default function GoogleSuccess() {
     const token = params.get("token");
 
     if (token) {
+
       localStorage.setItem("token", token);
-      navigate("/user");   // change if your dashboard path differs
+      localStorage.setItem("role", "user");   // ⭐ IMPORTANT
+      navigate("/user");
+
     } else {
-      navigate("/login");
+
+      navigate("/");
+
     }
 
   }, []);
 
   return <h2 style={{textAlign:"center",marginTop:"100px"}}>Signing you in...</h2>;
+
 }

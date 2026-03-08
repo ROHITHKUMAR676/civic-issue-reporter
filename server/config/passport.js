@@ -13,19 +13,31 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       try {
 
-        let user = await User.findOne({ googleId: profile.id });
+        const email = profile.emails[0].value;
 
-        // If user not exist → create
-        if (!user) {
+// Check if user already exists by email
+let user = await User.findOne({ email });
 
-          user = await User.create({
-            googleId: profile.id,
-            name: profile.displayName,
-            email: profile.emails[0].value,
-          });
+if (!user) {
 
-        }
+  // Create new user if email not found
+  user = await User.create({
+    googleId: profile.id,
+    name: profile.displayName,
+    email: email,
+    role: "user",
+    isVerified: true
+  });
 
+} else {
+
+  // If user exists but doesn't have googleId yet
+  if (!user.googleId) {
+    user.googleId = profile.id;
+    await user.save();
+  }
+
+}
         return done(null, user);
 
       } catch (err) {

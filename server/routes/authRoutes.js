@@ -43,17 +43,31 @@ if (userExists) {
 
 const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-const user = await User.create({
-  name,
-  email,
-  password: hashedPassword,
-  role: role || "user",
-  department: role === "dept" ? department : null,
-  otp: otp,
-  otpExpiry: Date.now() + 5 * 60 * 1000,
-  isVerified: false
-});
+let user;
 
+try {
+
+  user = await User.create({
+    name,
+    email,
+    password: hashedPassword,
+    role: role || "user",
+    department: role === "dept" ? department : null,
+    otp: otp,
+    otpExpiry: Date.now() + 5 * 60 * 1000,
+    isVerified: false
+  });
+
+} catch (err) {
+
+  if (err.code === 11000) {
+    return res.status(400).json({
+      message: "User already exists"
+    });
+  }
+
+  throw err;
+}
 // send OTP email
 await sendOTP(email, otp);
 
@@ -204,27 +218,15 @@ router.get("/auth/google",
 
 // google callback
 router.get("/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login", session: false }),
+  passport.authenticate("google", { failureRedirect: "/", session: false }),
   async (req, res) => {
 
-    const userData = req.user;
+    const user = req.user;
 
     // check if user exists
-   let user = await User.findOne({ email: userData.email });
+   
 
-if (!user) {
-  user = await User.create({
-    name: userData.name,
-    email: userData.email,
-    password: "google-oauth-user",
-    role: "user",
-    isVerified: true
-  });
-} else {
-  // ensure Google users are always verified
-  user.isVerified = true;
-  await user.save();
-}
+
 
     // generate JWT (same as your normal login)
     const token = jwt.sign(
