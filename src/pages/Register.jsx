@@ -183,6 +183,10 @@ export default function Register() {
 
       {/* GOOGLE */}
       <button
+      onClick={() => {
+    window.location.href =
+      "https://civic-issue-reporter-c7du.onrender.com/api/auth/google";
+  }}
         className="
         w-full flex items-center justify-center gap-2
         bg-white text-gray-800
