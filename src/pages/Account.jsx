@@ -107,7 +107,7 @@ return (
 
       {/* CLOSE */}
       <button
-        onClick={() => navigate("/dashboard")}
+        onClick={() => navigate("/user")}
         className="absolute top-4 right-4 sm:top-6 sm:right-6
         text-gray-400 hover:text-white transition"
       >
